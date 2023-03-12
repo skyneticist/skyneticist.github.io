@@ -1,153 +1,206 @@
-<h1> Git Guide <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/brands/git-alt.svg" width="25" height="25">
-</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-<h2 id="overview">Overview</h2>
-<blockquote>
-<p>Git is a version control system used for tracking changes made to files over time. <br>
-It helps organize code in a central place, promoting and supporting collaboration on different projects.</p>
-</blockquote>
-<blockquote>
-<p>This is incredibly useful for teams working together on projects and requires some thought and heeding good practices to minimize any pain and to best promote efficient, fun, and smooth collaborating. </p>
-</blockquote>
-<br>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+    text {
+        font-family: 'Mukta', sans-serif;
+    }
+    body {
+        background-color: #636e72;
+    }
+</style>
 
-<p>With git, it takes at least three separate commands to share a commit with your colleagues:</p>
-<pre><code class="language-shell">$ git add .
-</code></pre>
-<p>The first step adds all files with changes from the working copy of code on your machine to the <code>staging area</code>:</p>
-<p>From here, these changes can be committed to your local repository. We&#39;ll include </p>
-<pre><code class="language-shell">$ git commit -m &quot;message to associate with commit&quot;
-</code></pre>
-<p>We do this in the second step, passing <code>-m</code> command-line flag to specify we are providing a message describing the changes of the commit, inline, with this commit command:</p>
-<p>Finally we simply run <code>git push</code> to push the changes on our local repository up to the remote repository for others on your team to pull down on their side. </p>
-<pre><code class="language-shell">$ git push
-</code></pre>
-<p>Notice that we could have used <code>*</code> or <code>.</code> with the first command. Each command results in different behaviors and we should consider the differences now. </p>
-<p>In a nutshell, <code>git add .</code> adds all files, folders, and subfolders, including <code>.gitignore</code> and all other hidden or <code>dot</code> files. </p>
-<p><code>git add *</code> does virtually the same thing, with the one difference being it will not add any dot files (files beginning with a dot <code>.</code> -- 
-    hidden files.</p>
-<p>You likely won&#39;t run into many cases where you wish to ignore changes made to hidden or dot files, but using <code>git add *</code> would be the command to push any other file changes.</p>
-<p>With that said, you will principally use <code>git add .</code> to add local file changes to the 
-staging area.</p>
-<p>Although not particularly important, it should be noted that <code>*</code> is
-expanded for you, while <code>.</code> is a git-specific argument that the Git cli uses to add all changes.</p>
-<h2 id="about-this-guide">About This Guide</h2>
-<hr>
-<p>This guide intentionally assumes you have minimal working knowledge at best. </p>
-<p>Each section is organized in a way to be as conducive toward your collaborating with your team and the shared codebase(s) as possible</p>
-<p>The <code>Common Workflow</code> section is the core of this guide, with subsequent sections focusing on less commonly used yet useful flows.</p>
-<p>The words <code>workflow</code>, and  <code>flow</code> are used often in this guide and are interchangeable. It simply refers to the commands and actions you must take to achieve some common end result desired when working on a team using Git.</p>
-<h2 id="branching-strategymodel">Branching Strategy/Model</h2>
-<hr>
-<br>
+<body>
+    <h1> Git Guide <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/brands/git-alt.svg"
+            width="25" height="25">
+    </h1>
 
-<p><em>There was once a developer in Helsinki, who accidentally cut off his pinky. When he was asked what he remebers, he said:</em></p>
-<br>
+    <h2 id="overview">Overview</h2>
+    <blockquote>
+        <p>Git is a version control system used for tracking changes made to files over time. <br>
+            It helps organize code in a central place, promoting and supporting collaboration on different projects.</p>
+    </blockquote>
+    <blockquote>
+        <p>This is incredibly useful for teams working together on projects and requires some thought and heeding good
+            practices to minimize any pain and to best promote efficient, fun, and smooth collaborating. </p>
+    </blockquote>
+    <br>
 
-<h4 id="no-long-lived-branches"><em><strong>No Long-lived Branches!</strong></em></h4>
-<br>
+    <p>With git, it takes at least three separate commands to share a commit with your colleagues:</p>
+    <pre><code class="language-shell">$ git add .
+    </code></pre>
+    <p>The first step adds all files with changes from the working copy of code on your machine to the
+        <code>staging area</code>:</p>
+    <p>From here, these changes can be committed to your local repository. We&#39;ll include </p>
+    <pre><code class="language-shell">$ git commit -m &quot;message to associate with commit&quot;
+    </code></pre>
+    <p>We do this in the second step, passing <code>-m</code> command-line flag to specify we are providing a message
+        describing the changes of the commit, inline, with this commit command:</p>
+    <p>Finally we simply run <code>git push</code> to push the changes on our local repository up to the remote
+        repository for others on your team to pull down on their side. </p>
+    <pre><code class="language-shell">$ git push
+    </code></pre>
+    <p>Notice that we could have used <code>*</code> or <code>.</code> with the first command. Each command results in
+        different behaviors and we should consider the differences now. </p>
+    <p>In a nutshell, <code>git add .</code> adds all files, folders, and subfolders, including <code>.gitignore</code>
+        and all other hidden or <code>dot</code> files. </p>
+    <p><code>git add *</code> does virtually the same thing, with the one difference being it will not add any dot files
+        (files beginning with a dot <code>.</code> --
+        hidden files.</p>
+    <p>You likely won&#39;t run into many cases where you wish to ignore changes made to hidden or dot files, but using
+        <code>git add *</code> would be the command to push any other file changes.</p>
+    <p>With that said, you will principally use <code>git add .</code> to add local file changes to the
+        staging area.</p>
+    <p>Although not particularly important, it should be noted that <code>*</code> is
+        expanded for you, while <code>.</code> is a git-specific argument that the Git cli uses to add all changes.</p>
+    <h2 id="about-this-guide">About This Guide</h2>
+    <hr>
+    <p>This guide intentionally assumes you have minimal working knowledge at best. </p>
+    <p>Each section is organized in a way to be as conducive toward your collaborating with your team and the shared
+        codebase(s) as possible</p>
+    <p>The <code>Common Workflow</code> section is the core of this guide, with subsequent sections focusing on less
+        commonly used yet useful flows.</p>
+    <p>The words <code>workflow</code>, and <code>flow</code> are used often in this guide and are interchangeable. It
+        simply refers to the commands and actions you must take to achieve some common end result desired when working
+        on a team using Git.</p>
+    <h2 id="branching-strategymodel">Branching Strategy/Model</h2>
+    <hr>
+    <br>
 
-<p>Down below you will soon learn additional commands for working effectively with
-Git in the command-line. </p>
-<p>These commands are neither complex nor are they used nearly as frequently as the three simple commands we have just worked with when pushing changes up to the remote server. 
-In fact, it should be stressed that it is BEST PRACTICE to commit and push code regularly. </p>
-<p>The motto is: <code>No Long-lived Branches</code>. You likely will only benefit from following it.</p>
-<p>In an ideal world, each commit you make should contain an isolated and complete change. </p>
-<p>This helps both you and your teammates out, in both the short- and long-term. </p>
-<p>Keeping your changes isolated and complete allows others to consume and understand
-the changes in a more digestible manner, promoting collaboration and reducing the 
-&quot;noise&quot; along with any confusion or disouragement that might come along with it.</p>
-<p>Not only will you be helping out your teammates, by following this best practice you 
-will minimize future frustrations and wasted time. </p>
-<p>Without doubt, you will make mistakes, and those mistakes will be committed up to a remote repository. </p>
-<p>If you have done well to make complete, isolated commits, then finding, targeting, and reverting
-only what is necessary will be easier--and, in many cases, significantly reduce the 
-pain experienced when needing to revert changes, whether in your own remote branch or in the default branch or other shared branches (<code>main</code>, <code>master</code>, <code>develop</code>).</p>
-<p>Not only will there be cases where you have committed unwanted code/functionality
-up to some remote, but business requirements change and you are asked to revert some
-recently added feature or functionality.</p>
-<p>Frequently pushing code up will help keep your changes backed up as well. 
-While it&#39;s necessary and advantageous to coordinate with your team, there are many 
-opportunities for headache around maintaining the team&#39;s codebases to occur--even with
-careful planning, there&#39;s still the chance two or more people make changes to the same 
-file(s), and run into a mess when getting changes merged into a shared remote branch.</p>
-<h3 id="teams-at-vizient-branch-strat">Teams at Vizient (branch strat)</h3>
-<hr>
-<p>There are many different teams at Vizient, which means things are done in many different ways.</p>
-<p>Here are some statistics giving us an indication of which branching strategy teams are using at Vizient. </p>
-<p>While this metric might be helpful, it should be noted that this doesn&#39;t fully represent the strategies employed at Vizient. </p>
-<p><code>stats here</code></p>
-<h2 id="other-flow-used-at-vizient">Other flow used at Vizient</h2>
-<h2 id="other-flow-used-at-vizient-1">Other flow used at Vizient</h2>
-<h2 id="github-flow----hybridatlassian-strategy">Github flow -- hybrid/atlassian strategy</h2>
-<h3 id="team-agreement">Team Agreement</h3>
-<hr>
-<p>Speak with your team and read  your team&#39;s <code>Team Agreement</code></p>
-<p>Every team at Vizient should have a working Team Agreement they have created.</p>
-<p>The content of this document is agreed upon by the team, and outlines what is expected of each and every member.</p>
-<p>The speciic contents within depend on what the team has agreed upon, but there&#39;s 
-likely a section outlining how the engineers on the team collaborate, including the 
-branching strategy, naming and commit message conventions, release cadences, and other important information to promote your success on that team. </p>
-<p>If there&#39;s not such a section, or if the team agrees it could be more robust, set up a meeting to discuss and take appropriate action. </p>
-<p>Either way, you should be aware of what conventions and standards they have agreed to follow, and take note. </p>
-<p>For this guide, the goal is to be both comprehensive and promote best practice. </p>
-<p>Given that there are multiple different brancing strategies observed across teams at Vizient, it is beneficial to discuss the most popular ones, along with best practices both general and strategy-specific. </p>
-<p>Although I make an attempt to not be overly opinionated, I would note that any team 
-using the old (~2010) Git flow branching strategy to ask their team if it makes sense to try something different. If this works well for your team, then, great, don&#39;t worry about it.</p>
-<p>If you are not familiar with your team&#39;s document, please reach out to your Product Owner or another personon your team.</p>
-<h2 id="dont-be-afraid-to-suggest-ideas-to-improve-your-teams-branching-strategy">Don&#39;t be afraid to suggest ideas to improve your team&#39;s branching strategy</h2>
-<p>If you have ideas, share them with your team. Try not to be shy or worry too much about how you will be received. It will almost certainly be positive, and it doesn&#39;t particularly matter anyway.</p>
-<p>Nothing is more valued than ideas, and of course, you need to share the ideas for them to blossom into some real-world difference.</p>
-<p>With that said, take time to investigate your team&#39;s Team Agreement document, and see if there are any glaring areas needing attention.</p>
-<h2 id="considerations-with-cicd-and-releases">Considerations with CI/CD and releases</h2>
-<h2 id="best-practices-for-branch-naming">Best practices for branch naming</h2>
-<p>The goal with a branch name is to allow others to learn about ongoing work at a           glance.</p>
-<blockquote>
-<p><code>git checkout -b feature/867539_refactor-unit-tests</code></p>
-</blockquote>
-<blockquote>
-<p><code>git checkout spike/862044_try-splitIO</code></p>
-</blockquote>
-<h1 id="convention-for-commit-message-format">Convention for commit message format</h1>
-<blockquote>
-<h4 id="you-will-need-to-check-with-your-team----try-team-agreement-first">You will need to check with your team -- try team agreement first.</h4>
-</blockquote>
-<h2 id="explain-making-changes-and-vcs-principles">Explain making changes and VCS principles</h2>
-<blockquote>
-</blockquote>
-<h2 id="feature-branches">Feature Branches</h2>
-<blockquote>
-<p>Having clear, complete, and isolated commits promotes your </p>
-</blockquote>
-<h3 id="checking-installation">Checking Installation</h3>
-<hr>
-<h3 id="workflow-main">Workflow (main)</h3>
-<hr>
-<h3 id="argument-for-using-the-command-line">Argument for using the command-line</h3>
-<hr>
-<h3 id="other-useful-actions-in-git">Other Useful Actions in Git</h3>
-<hr>
-<h3 id="useful-but-less-frequently-used-commands">Useful but less frequently used commands</h3>
-<hr>
-<pre><code class="language-shell">$ git version  
-</code></pre>
-<pre><code class="language-shell">$ git status
-</code></pre>
-<pre><code class="language-shell">$ git fetch
-</code></pre>
-<pre><code class="language-shell">$ git pull
-</code></pre>
-<pre><code class="language-shell">$ git add .
-</code></pre>
-<pre><code class="language-shell">$ git add *
-</code></pre>
-<pre><code class="language-shell">$ git commit -m &#39;Your commit message here&#39;
-</code></pre>
-<pre><code class="language-shell">$ git push
-</code></pre>
-<pre><code class="language-shell">$ git push --set-remote origin &lt;branch_name&gt;
-</code></pre>
-<pre><code class="language-shell">$ git checkout &lt;branch_name&gt;
-</code></pre>
-<pre><code class="language-shell">$ git checkout -b &lt;branch_name&gt;
-</code></pre>
+    <p><em>There was once a developer in Helsinki, who accidentally cut off his pinky. When he was asked what he
+            remebers, he said:</em></p>
+    <br>
+
+    <h4 id="no-long-lived-branches"><em><strong>No Long-lived Branches!</strong></em></h4>
+    <br>
+
+    <p>Down below you will soon learn additional commands for working effectively with
+        Git in the command-line. </p>
+    <p>These commands are neither complex nor are they used nearly as frequently as the three simple commands we have
+        just worked with when pushing changes up to the remote server.
+        In fact, it should be stressed that it is BEST PRACTICE to commit and push code regularly. </p>
+    <p>The motto is: <code>No Long-lived Branches</code>. You likely will only benefit from following it.</p>
+    <p>In an ideal world, each commit you make should contain an isolated and complete change. </p>
+    <p>This helps both you and your teammates out, in both the short- and long-term. </p>
+    <p>Keeping your changes isolated and complete allows others to consume and understand
+        the changes in a more digestible manner, promoting collaboration and reducing the
+        &quot;noise&quot; along with any confusion or disouragement that might come along with it.</p>
+    <p>Not only will you be helping out your teammates, by following this best practice you
+        will minimize future frustrations and wasted time. </p>
+    <p>Without doubt, you will make mistakes, and those mistakes will be committed up to a remote repository. </p>
+    <p>If you have done well to make complete, isolated commits, then finding, targeting, and reverting
+        only what is necessary will be easier--and, in many cases, significantly reduce the
+        pain experienced when needing to revert changes, whether in your own remote branch or in the default branch or
+        other shared branches (<code>main</code>, <code>master</code>, <code>develop</code>).</p>
+    <p>Not only will there be cases where you have committed unwanted code/functionality
+        up to some remote, but business requirements change and you are asked to revert some
+        recently added feature or functionality.</p>
+    <p>Frequently pushing code up will help keep your changes backed up as well.
+        While it&#39;s necessary and advantageous to coordinate with your team, there are many
+        opportunities for headache around maintaining the team&#39;s codebases to occur--even with
+        careful planning, there&#39;s still the chance two or more people make changes to the same
+        file(s), and run into a mess when getting changes merged into a shared remote branch.</p>
+    <h3 id="teams-at-vizient-branch-strat">Teams at Vizient (branch strat)</h3>
+    <hr>
+    <p>There are many different teams at Vizient, which means things are done in many different ways.</p>
+    <p>Here are some statistics giving us an indication of which branching strategy teams are using at Vizient. </p>
+    <p>While this metric might be helpful, it should be noted that this doesn&#39;t fully represent the strategies
+        employed at Vizient. </p>
+    <p><code>stats here</code></p>
+    <h2 id="other-flow-used-at-vizient">Other flow used at Vizient</h2>
+    <h2 id="other-flow-used-at-vizient-1">Other flow used at Vizient</h2>
+    <h2 id="github-flow----hybridatlassian-strategy">Github flow -- hybrid/atlassian strategy</h2>
+    <h3 id="team-agreement">Team Agreement</h3>
+    <hr>
+    <p>Speak with your team and read your team&#39;s <code>Team Agreement</code></p>
+    <p>Every team at Vizient should have a working Team Agreement they have created.</p>
+    <p>The content of this document is agreed upon by the team, and outlines what is expected of each and every member.
+    </p>
+    <p>The speciic contents within depend on what the team has agreed upon, but there&#39;s
+        likely a section outlining how the engineers on the team collaborate, including the
+        branching strategy, naming and commit message conventions, release cadences, and other important information to
+        promote your success on that team. </p>
+    <p>If there&#39;s not such a section, or if the team agrees it could be more robust, set up a meeting to discuss and
+        take appropriate action. </p>
+    <p>Either way, you should be aware of what conventions and standards they have agreed to follow, and take note. </p>
+    <p>For this guide, the goal is to be both comprehensive and promote best practice. </p>
+    <p>Given that there are multiple different brancing strategies observed across teams at Vizient, it is beneficial to
+        discuss the most popular ones, along with best practices both general and strategy-specific. </p>
+    <p>Although I make an attempt to not be overly opinionated, I would note that any team
+        using the old (~2010) Git flow branching strategy to ask their team if it makes sense to try something
+        different. If this works well for your team, then, great, don&#39;t worry about it.</p>
+    <p>If you are not familiar with your team&#39;s document, please reach out to your Product Owner or another personon
+        your team.</p>
+    <h2 id="dont-be-afraid-to-suggest-ideas-to-improve-your-teams-branching-strategy">Don&#39;t be afraid to suggest
+        ideas to improve your team&#39;s branching strategy</h2>
+    <p>If you have ideas, share them with your team. Try not to be shy or worry too much about how you will be received.
+        It will almost certainly be positive, and it doesn&#39;t particularly matter anyway.</p>
+    <p>Nothing is more valued than ideas, and of course, you need to share the ideas for them to blossom into some
+        real-world difference.</p>
+    <p>With that said, take time to investigate your team&#39;s Team Agreement document, and see if there are any
+        glaring areas needing attention.</p>
+    <h2 id="considerations-with-cicd-and-releases">Considerations with CI/CD and releases</h2>
+    <h2 id="best-practices-for-branch-naming">Best practices for branch naming</h2>
+    <p>The goal with a branch name is to allow others to learn about ongoing work at a glance.</p>
+    <blockquote>
+        <p><code>git checkout -b feature/867539_refactor-unit-tests</code></p>
+    </blockquote>
+    <blockquote>
+        <p><code>git checkout spike/862044_try-splitIO</code></p>
+    </blockquote>
+    <h1 id="convention-for-commit-message-format">Convention for commit message format</h1>
+    <blockquote>
+        <h4 id="you-will-need-to-check-with-your-team----try-team-agreement-first">You will need to check with your team
+            -- try team agreement first.</h4>
+    </blockquote>
+    <h2 id="explain-making-changes-and-vcs-principles">Explain making changes and VCS principles</h2>
+    <blockquote>
+    </blockquote>
+    <h2 id="feature-branches">Feature Branches</h2>
+    <blockquote>
+        <p>Having clear, complete, and isolated commits promotes your </p>
+    </blockquote>
+    <h3 id="checking-installation">Checking Installation</h3>
+    <hr>
+    <h3 id="workflow-main">Workflow (main)</h3>
+    <hr>
+    <h3 id="argument-for-using-the-command-line">Argument for using the command-line</h3>
+    <hr>
+    <h3 id="other-useful-actions-in-git">Other Useful Actions in Git</h3>
+    <hr>
+    <h3 id="useful-but-less-frequently-used-commands">Useful but less frequently used commands</h3>
+    <hr>
+    <pre><code class="language-shell">$ git version  
+    </code></pre>
+    <pre><code class="language-shell">$ git status
+    </code></pre>
+    <pre><code class="language-shell">$ git fetch
+    </code></pre>
+    <pre><code class="language-shell">$ git pull
+    </code></pre>
+    <pre><code class="language-shell">$ git add .
+    </code></pre>
+    <pre><code class="language-shell">$ git add *
+    </code></pre>
+    <pre><code class="language-shell">$ git commit -m &#39;Your commit message here&#39;
+    </code></pre>
+    <pre><code class="language-shell">$ git push
+    </code></pre>
+    <pre><code class="language-shell">$ git push --set-remote origin &lt;branch_name&gt;
+    </code></pre>
+    <pre><code class="language-shell">$ git checkout &lt;branch_name&gt;
+    </code></pre>
+    <pre><code class="language-shell">$ git checkout -b &lt;branch_name&gt;
+    </code></pre>
+</body>
+
+</html>
